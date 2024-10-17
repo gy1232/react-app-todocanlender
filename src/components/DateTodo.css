@@ -1,0 +1,90 @@
+.day-todo {
+  width: 144px;
+  height: 144px;
+  border-radius: 0.5rem;
+  background-color: white;
+  position: relative;
+  text-align: center;
+  font-size: 80px;
+  font-weight: 800;
+}
+
+.day-todo-data {
+  height: 104px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.day-todo-result-text {
+  position: relative;
+  z-index: 2;
+}
+
+.day-todo-result {
+  height: 40px;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+  font-size: 1.25rem;
+  font-weight: 400;
+  border-bottom-left-radius: 0.5rem;
+  border-bottom-right-radius: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 500ms linear;
+  overflow: hidden;
+  position: relative;
+}
+
+.day-todo-result::before,
+.day-todo-result::after {
+  content: '';
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transition: opacity 500ms linear;
+  z-index: 1;
+}
+
+.day-todo-result::before {
+  opacity: 1;
+}
+
+.day-todo-result.completed::before {
+  background-image: linear-gradient(to right, #3cb371, #cccccc);
+}
+
+.day-todo-result.not-completed::before {
+  background-image: linear-gradient(to right, #db4455, #cccccc);
+}
+
+.day-todo-result.not-logged-in {
+  background-color: #cccccc;
+}
+
+.day-todo-result::after {
+  opacity: 0;
+}
+
+.day-todo-result.completed::after {
+  background-image: linear-gradient(to right, #cccccc, #3cb371);
+}
+
+.day-todo-result.not-completed::after {
+  background-image: linear-gradient(to right, #cccccc, #db4455);
+}
+
+.day-todo-result:hover::after {
+  opacity: 1;
+}
+
+.day-todo-result:hover::before {
+  opacity: 0;
+}
