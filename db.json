@@ -1,0 +1,73 @@
+{
+  "Users": [
+    {
+      "id": "rnrdud",
+      "userid": "rnrdud",
+      "password": "1234",
+      "email": "rnrdud@gmail.com",
+      "tasks": {
+        "2024-06-17": [
+          {
+            "task": "화면구현 계획서 작성",
+            "completed": false
+          },
+          {
+            "task": "코드 리뷰",
+            "completed": false
+          }
+        ],
+        "2024-06-18": [
+          {
+            "task": "회의 참석",
+            "completed": false
+          }
+        ],
+        "2024-06-19": [
+          {
+            "task": "마이페이지 만들기",
+            "completed": false
+          },
+          {
+            "task": "메인페이지 완료처리",
+            "completed": false
+          },
+          {
+            "task": "캡스톤 소개페이지 완성",
+            "completed": false
+          }
+        ],
+        "2024-06-20": [
+          {
+            "task": "캐쉬풀어스 면접",
+            "completed": true
+          }
+        ],
+        "2024-06-25": [
+          {
+            "task": "면접 결과",
+            "completed": false
+          }
+        ]
+      }
+    },
+    {
+      "id": "gbsw",
+      "userid": "gbsw",
+      "password": "1234",
+      "email": "gbsw@gmail.com",
+      "tasks": {
+        "2024-06-18": [],
+        "2024-06-12": [
+          {
+            "task": "몰라",
+            "completed": false
+          },
+          {
+            "task": "개발",
+            "completed": false
+          }
+        ]
+      }
+    }
+  ]
+}
