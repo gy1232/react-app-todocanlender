@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import Header from '../components/Header';
 import DateTodo from '../components/DateTodo';
 import { useNavigate } from 'react-router-dom';
@@ -50,45 +50,50 @@ const Home = () => {
     },
   };
 
-  const fetchTasks = async (year, month) => {
-    try {
-      const response = await fetch(`${process.env.REACT_APP_API_URL}Users`);
-      if (response.ok) {
-        const users = await response.json();
-        const user = users.find((user) => user.userid === loginToken);
+  const fetchTasks = useCallback(
+    async (year, month) => {
+      try {
+        const response = await fetch(`${process.env.REACT_APP_API_URL}Users`);
+        if (response.ok) {
+          const users = await response.json();
+          const user = users.find((user) => user.userid === loginToken);
 
-        if (user) {
-          const userTasks = user.tasks || {};
-          const daysInMonth = new Date(year, month, 0).getDate();
-          const dayList = Array.from({ length: daysInMonth }, (_, index) => {
-            const day = index + 1;
-            const tasks =
-              userTasks[
-                `${year}-${String(month).padStart(2, '0')}-${String(
-                  day
-                ).padStart(2, '0')}`
-              ] || [];
-            const isCompleted =
-              tasks.length > 0 && tasks.every((task) => task.completed);
-            return {
-              id: day,
-              day: day,
-              result:
-                tasks.length === 0 ? '없음' : isCompleted ? '완료' : '미완료',
-            };
-          });
-          setDayList(dayList);
+          if (user) {
+            const userTasks = user.tasks || {};
+            const daysInMonth = new Date(year, month, 0).getDate();
+            const dayList = Array.from({ length: daysInMonth }, (_, index) => {
+              const day = index + 1;
+              const tasks =
+                userTasks[
+                  `${year}-${String(month).padStart(2, '0')}-${String(
+                    day
+                  ).padStart(2, '0')}`
+                ] || [];
+              const isCompleted =
+                tasks.length > 0 && tasks.every((task) => task.completed);
+              return {
+                id: day,
+                day: day,
+                result:
+                  tasks.length === 0 ? '없음' : isCompleted ? '완료' : '미완료',
+              };
+            });
+            setDayList(dayList);
+          } else {
+            toast.error('일치하는 사용자를 찾을 수 없습니다.');
+          }
         } else {
-          toast.error('일치하는 사용자를 찾을 수 없습니다.');
+          const errorData = await response.json();
+          toast.error(
+            errorData.message || '데이터를 가져오는 데 실패했습니다.'
+          );
         }
-      } else {
-        const errorData = await response.json();
-        toast.error(errorData.message || '데이터를 가져오는 데 실패했습니다.');
+      } catch (error) {
+        toast.error('서버와의 통신 중 오류가 발생했습니다.');
       }
-    } catch (error) {
-      toast.error('서버와의 통신 중 오류가 발생했습니다.');
-    }
-  };
+    },
+    [loginToken]
+  );
 
   useEffect(() => {
     if (loginToken) {
@@ -102,7 +107,7 @@ const Home = () => {
       }));
       setDayList(dayList);
     }
-  }, [loginToken, selectedYear, selectedMonth]);
+  }, [loginToken, selectedYear, selectedMonth, fetchTasks]);
 
   const toDetail = (year, month, day) => {
     navigate(`/detail/${year}/${month}/${day}`);
