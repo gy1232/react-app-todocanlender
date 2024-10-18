@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useCookies } from 'react-cookie';
 import AllowImg from '../assets/chevron_left.png';
@@ -17,10 +17,10 @@ const Header = ({
   const userId = cookies.login_token;
 
   const years = Array.from(
-    { length: 10 },
+    { length: 5 },
     (_, i) => new Date().getFullYear() - i
-  ); // 최근 10년
-  const months = Array.from({ length: 12 }, (_, i) => i + 1); // 1월부터 12월까지
+  );
+  const months = Array.from({ length: 12 }, (_, i) => i + 1);
 
   const handleYearChange = (event) => {
     setSelectedYear(event.target.value);
@@ -43,7 +43,6 @@ const Header = ({
   };
 
   useEffect(() => {
-    // Set the current year and month to the passed props
     if (isHome) {
       setSelectedYear(selectedYear);
       setSelectedMonth(selectedMonth);
@@ -56,7 +55,7 @@ const Header = ({
         <>
           <div className="w-2/5 flex justify-start items-center pl-11">
             <select
-              className="text-5xl font-medium pr-5"
+              className=" max-sm:text-3xl pr-0 text-5xl font-medium pr-5"
               value={selectedYear}
               onChange={handleYearChange}
             >
@@ -67,7 +66,7 @@ const Header = ({
               ))}
             </select>
             <select
-              className="text-5xl font-medium"
+              className=" max-sm:text-3xl text-5xl font-medium"
               value={selectedMonth}
               onChange={handleMonthChange}
             >
@@ -81,14 +80,14 @@ const Header = ({
           <div className="w-3/5 flex justify-end items-center pr-11">
             {userId ? (
               <div
-                className="text-4xl font-medium cursor-pointer"
+                className=" max-sm:text-3xl text-4xl font-medium cursor-pointer"
                 onClick={toMypage}
               >
                 {userId}
               </div>
             ) : (
               <div
-                className="text-4xl font-medium cursor-pointer"
+                className=" max-sm:text-2xl text-4xl font-medium cursor-pointer"
                 onClick={toLogin}
               >
                 로그인
@@ -105,12 +104,12 @@ const Header = ({
             <img src={leftChevron} alt="Allow" className="w-[50px] h-[50px]" />
             <div>back</div>
           </div>
-          <div className="text-5xl font-medium flex-1 text-center">
+          <div className=" max-sm:text-2xl text-5xl font-medium flex-1 text-center">
             {pageName}
           </div>
           <div className="flex justify-end items-center">
             <div
-              className="text-4xl font-medium cursor-pointer fixed pr-11"
+              className=" max-sm:text-2xl text-4xl font-medium cursor-pointer fixed pr-11"
               onClick={toMypage}
             >
               {userId}

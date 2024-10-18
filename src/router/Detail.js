@@ -214,7 +214,7 @@ const Detail = () => {
       <div className="w-full h-full flex justify-center">
         <div className="w-2/3 h-full bg-white pt-24">
           <div className="w-full h-40 flex justify-center items-center">
-            <div className="text-5xl font-bold">
+            <div className=" max-sm:text-3xl text-5xl font-bold">
               {year}-{month}-{day}
             </div>
           </div>

@@ -47,7 +47,14 @@
             "task": "면접 결과",
             "completed": false
           }
-        ]
+        ],
+        "2024-10-18": [
+          {
+            "task": "test",
+            "completed": true
+          }
+        ],
+        "2024-10-01": []
       }
     },
     {

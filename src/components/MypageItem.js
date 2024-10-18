@@ -7,7 +7,9 @@ const MypageItem = ({ task }) => {
             <div className="text-2xl font-normal p-1">{task.task}</div>
           </div>
           <div className=" w-1/2 flex items-center justify-end">
-            <div className="text-sm font-light text-gray-500">{task.date}</div>
+            <div className=" max-sm:text-[0.7rem] text-sm font-light text-gray-500">
+              {task.date}
+            </div>
           </div>
         </div>
       </div>

@@ -88,3 +88,18 @@
 .day-todo-result:hover::before {
   opacity: 0;
 }
+
+@media (max-width: 1200px) {
+  .day-todo {
+    width: 8rem;
+    height: 8rem;
+    font-size: 4rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .day-todo {
+    width: 15rem;
+    height: 8rem;
+  }
+}

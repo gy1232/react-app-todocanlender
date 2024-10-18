@@ -118,7 +118,7 @@ const Home = () => {
         setSelectedMonth={setSelectedMonth}
       />
       <div className="w-full flex justify-center px-12">
-        <div className="w-full grid gap-14 grid-cols-7 pt-36 pb-8">
+        <div className="w-full grid gap-14 grid-cols-7 pt-36 pb-8 max-xl:flex flex-wrap justify-center">
           {dayList.map((item) => (
             <DateTodo
               key={item.id}
