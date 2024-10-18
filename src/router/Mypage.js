@@ -5,7 +5,6 @@ import { useCookies } from 'react-cookie';
 import MypageItem from '../components/MypageItem';
 
 const Mypage = () => {
-  const [tasks, setTasks] = useState([]);
   const [completedTasks, setCompletedTasks] = useState([]);
   const [incompleteTasks, setIncompleteTasks] = useState([]);
   const [showCompleted, setShowCompleted] = useState(true);
@@ -38,7 +37,6 @@ const Mypage = () => {
                 []
               );
 
-            setTasks(tasksForMonth);
             setCompletedTasks(tasksForMonth.filter((task) => task.completed));
             setIncompleteTasks(tasksForMonth.filter((task) => !task.completed));
           } else {
