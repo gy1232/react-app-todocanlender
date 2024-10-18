@@ -16,9 +16,10 @@ const Header = ({
   const [cookies] = useCookies(['login_token']);
   const userId = cookies.login_token;
 
+  // 지난 5년부터 이후 5년까지 조회하도록 수정
   const years = Array.from(
-    { length: 5 },
-    (_, i) => new Date().getFullYear() - i
+    { length: 10 },
+    (_, i) => new Date().getFullYear() - 5 + i
   );
   const months = Array.from({ length: 12 }, (_, i) => i + 1);
 
