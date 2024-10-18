@@ -1,5 +1,4 @@
 {
-  "homepage": "https://todocanlender.netlify.app",
   "name": "todocanlender",
   "version": "0.1.0",
   "private": true,
@@ -47,5 +46,5 @@
     "gh-pages": "^6.1.1",
     "tailwindcss": "^3.4.3"
   },
-  "homepage": "https://gy1232.github.io/react-app-todocanlender"
+  "homepage": "https://todocanlender.netlify.app"
 }
